@@ -1,0 +1,26 @@
+From 97fc35c93ce92aa064ff17c4ad8d1217ce164d0e Mon Sep 17 00:00:00 2001
+From: jhonhawer8 <jhonhawer8@gmail.com>
+Date: Thu, 14 Sep 2017 15:32:05 -0500
+Subject: [PATCH] prueba de segundo commit
+
+---
+ app/Http/Controllers/AjaxControllerCarval.php | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/app/Http/Controllers/AjaxControllerCarval.php b/app/Http/Controllers/AjaxControllerCarval.php
+index d215c20..fb5d6f5 100644
+--- a/app/Http/Controllers/AjaxControllerCarval.php
++++ b/app/Http/Controllers/AjaxControllerCarval.php
+@@ -22,6 +22,9 @@ class AjaxControllerCarval extends Controller {
+ 	 * @return mixed
+ 	 */
+ 	public Static function getDatosConsolidacion() {
++	    
++	    
++	    
+ 		// $tasks = Task::select(['id','name','category','state']);
+ 		
+ 		// $usuarios = Usuario::select(['id']);
+-- 
+2.14.0.windows.2
+
