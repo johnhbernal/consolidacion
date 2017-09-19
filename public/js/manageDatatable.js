@@ -423,6 +423,7 @@ selector(document).ready(function() {
 		
 		
 		consolidacion();
+		progreso();
 });// End document ready
     
     

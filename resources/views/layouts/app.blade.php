@@ -19,7 +19,7 @@
 
 <!-- Scripts -->
 </head>
-<body>
+<body class="keen-dashboard">
 	<div id="app">
 		<nav class="navbar navbar-default navbar-static-top">
 			<div class="container">
@@ -78,7 +78,7 @@
 						<!-- Authentication Links -->
 
 <!-- 				<li><a href="">Hora 	{{ \Carbon\Carbon::now()->toDateString('dd/mm/YY') }} </a></li> -->
-				<li><a href="">Hora 	{{ \Carbon\Carbon::now()->format('l jS \\of F Y h:i:s A')}} </a></li>
+<!-- 				<li><a href="">Hora 	{{ \Carbon\Carbon::now()->format('l jS \\of F Y h:i:s A')}} </a></li> -->
 						@if (Auth::guest())
 						<li><a href="{{ route('login') }}">Login</a></li>
 						<li><a href="{{ route('register') }}">Register</a></li> @else
