@@ -60,7 +60,7 @@
 			<div class="chart-wrapper">
 				<div class="chart-title">Pageviews by browser (past 5 days)</div>
 				<div class="chart-stage">
-					<img data-src="holder.js/100%x350/white">
+					<canvas id="bar-chart-grouped" width="800" height="450"></canvas>
 				</div>
 				<div class="chart-notes">Notes go down here</div>
 			</div>
@@ -69,66 +69,66 @@
 	</div>
 	<div class="row">
 
-		<div class="col-sm-12">
-			<div class="chart-wrapper">
-				<div class="chart-title">
-					<h1 align="center">
-						<strong>Listado de Usuarios</strong>
-					</h1>
-				</div>
-				<div class="chart-stage">
-					<a href="{{route('usuarios.create')}}"
-						class="btn btn-primary pull-right">Nuevo Usuario</a>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion"
+						href="#collapseTwo">Listado de Usuarios</a>
+				</h3>
+			</div>
+			<div id="collapseTwo" class="panel-collapse collapse in">
+				<div class="panel-body" style="padding-left: 5%;">
+					<div class="row" style="width: 96%;">
+						<div class="chart-stage">
+							<a href="{{route('usuarios.create')}}"
+								class="btn btn-primary pull-left">Nuevo Usuario</a>
 
-					<table id="dataTableUsuarios"
-						class="table table-striped table-bordered nowrap">
+							<table id="dataTableUsuarios"
+								class="table table-striped table-bordered nowrap">
 
-						<thead>
-							<tr>
-								<!-- 				<td width="20px"></td> -->
-								<td><p>Actualizacion</p></td>
-								<td width="20px"><p class="text-center">ID</p></td>
-								<td><p class="text-center">Número de identificación</p></td>
-								<td><p class="text-center">Primer Nombre</p></td>
-								<td><p class="text-center">Segundo Nombre</p></td>
-								<td><p class="text-center">Primer Apellido</p></td>
-								<td><p class="text-center">Segundo Apellido</p></td>
-								<td><p class="text-center">&nbsp;Acciones</p></td>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
+								<thead>
+									<tr>
+										<!-- 				<td width="20px"></td> -->
+										<td><p>Actualizacion</p></td>
+										<td width="20px"><p class="text-center">ID</p></td>
+										<td><p class="text-center">Número de identificación</p></td>
+										<td><p class="text-center">Primer Nombre</p></td>
+										<td><p class="text-center">Segundo Nombre</p></td>
+										<td><p class="text-center">Primer Apellido</p></td>
+										<td><p class="text-center">Segundo Apellido</p></td>
+										<td><p class="text-center">&nbsp;Acciones</p></td>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</div>
 				</div>
-				<div class="chart-notes">Notes go down here</div>
 			</div>
 		</div>
-
 	</div>
-
-
-	<div class="col-sm-12">
-		<div class="chart-wrapper">
-			<div class="chart-title">Impressions by advertiser</div>
-			<div class="chart-stage"></div>
-			<div class="chart-notes">Pie de pagina informativo</div>
+	<div class="row">
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion"
+						href="#collapseThree">Ejemplo de TablePivot</a>
+				</h3>
+			</div>
+			<div id="collapseThree" class="panel-collapse collapse in">
+				<div class="panel-body" style="padding-left: 5%;">
+					<div class="row" style="width: 96%;">
+						<div class="d-flex justify-content-center" id="output"
+							style="margin: 30px;"></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-
-	<!-- __termina la prueba -->
-
-	@include('usuarios.fragment.info') <br>
-
-	<div id="output" style="margin: 30px;"></div>
-
-
-	@endsection
-
-
 </div>
+<!-- __termina la prueba -->
 
-
-
-
-
-
+@include('usuarios.fragment.info')
+<br>
+@endsection

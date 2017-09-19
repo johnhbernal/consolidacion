@@ -23,7 +23,7 @@ function consolidacion() {
 				cols : [],
 				rows : [ "Linea" ],
 				rendererName : "Table Barchart"
-			}).DataTable;
+			});
 		});
 
 		// /**
