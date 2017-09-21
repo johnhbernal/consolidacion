@@ -46,26 +46,36 @@
   </script>
 	<div class="row">
 
-		<div class="col-sm-6">
-			<div class="chart-wrapper">
-				<div class="chart-title">Pageviews by browser (past 24 hours)</div>
-				<div class="chart-stage">
-					<canvas id="bar-chart" width="800" height="450"></canvas>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion"
+						href="#collapseOne">Muestreo de imagenes</a>
+				</h3>
+			</div>
+			<div id="collapseOne" class="panel-collapse collapse in">
+				<div class="panel-body" style="padding-left: 5%;">
+					<div class="row" style="width: 96%;">
+
+						<div class="col-sm-6">
+							<div class="chart-wrapper">
+								<div class="chart-stage">
+									<canvas id="bar-chart" width="800" height="450"></canvas>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-sm-6">
+							<div class="chart-wrapper">
+								<div class="chart-stage">
+									<canvas id="bar-chart-grouped" width="800" height="450"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
-				<div class="chart-notes">Aqui ponemos los datos</div>
 			</div>
 		</div>
-
-		<div class="col-sm-6">
-			<div class="chart-wrapper">
-				<div class="chart-title">Pageviews by browser (past 5 days)</div>
-				<div class="chart-stage">
-					<canvas id="bar-chart-grouped" width="800" height="450"></canvas>
-				</div>
-				<div class="chart-notes">Notes go down here</div>
-			</div>
-		</div>
-
 	</div>
 	<div class="row">
 
