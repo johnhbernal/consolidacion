@@ -52,8 +52,9 @@ class AjaxControllerCarval extends Controller
     }
 
     /**
-     * Funcion utilizada para consultar el Cumplimiento PresupuestoAcumulado y devuelve un json
+     * Funcion utilizada para consultar el Cumplimiento Presupuesto Acumulado y devuelve un json
      * utilizado por Chart.js para realizar el grafico
+     *
      * @return string
      */
     public static function getGraficosVentas()
@@ -73,21 +74,30 @@ class AjaxControllerCarval extends Controller
             $organizacion
         )));
     }
+
+    /*
+     * Funcion utilizada para mostrar el margen de ganancias en una grafica de chart.js
+     * 1-consto/venta
+     */
     public static function getGraficoMargen()
     
     {
-        $organizacion = 'CO-Carval Nal';
-        $organizacion = '%' . $organizacion . '%';
+        $totalMargen = array();
         
-        return json_encode($consolidacion = DB::connection('sqlsrv')->select('SELECT
-        SUM (ISNULL([VentaMGActual],0)) VentaActual
-        ,SUM (ISNULL([VentaMGAnterior],0)) VentaAnterior
-        ,SUM (ISNULL([PptoMlocal],0)) PptoMlocal
-        ,SUM (ISNULL([VentaMGActual],0))/SUM (ISNULL([PptoMlocal],0))*100 AS Cump
-            ,(SUM (ISNULL([VentaMGActual],0))-SUM (ISNULL([VentaMGAnterior],0)) )/SUM (ISNULL([VentaMGAnterior],0))*100  AS Crec
-                FROM [INReportes].[dbo].[BI_PRESUPUESTOS]
-                 WHERE [OrgVentas] LIKE ?', array(
-            $organizacion
-        )));
+        $consulParaMargen = DB::connection('sqlsrv')->select('
+                        SELECT SUM(INReportes.dbo.BI_VENTAS.CostoActual) AS CostoML,
+                                    ( SELECT SUM(INReportes.dbo.BI_PRESUPUESTOS.VentaMGActual) 
+                                        FROM [INReportes].[dbo].[BI_PRESUPUESTOS] 
+                                    )AS VentaML
+                        FROM [INReportes].[dbo].[BI_VENTAS]');
+        
+        $margen['Margen'] = (1 - $consulParaMargen[0]->CostoML / $consulParaMargen[0]->VentaML)*100;
+        $consulParaMargen[0]->Margen = $margen['Margen'];
+       
+        /*poner valor en una columna*/
+        $consulParaMargen[0]->Meta = 50 ;
+
+        
+        return json_encode($consulParaMargen);
     }
 }

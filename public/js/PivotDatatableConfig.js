@@ -69,16 +69,17 @@ function consolidacion() {
 	});
 	
 //	selector('#output').find('.pvtTable').style.color = "blue";
-console.log(selector('#output').find('table').find('.pvtTable'));
-selector('#output').append( "<span> - 2nd!</span>" );
+//console.log(selector('#output').find('table').find('.pvtTable'));
+//selector('#output').css({ 'color': 'red', 'font-size': '150%' }); // funciona todo el texto dentro del div
+selector('#output tr').css({ 'color': 'red', 'font-size': '150%' });
 
-selector('#output').find('#pivot').css("background", "yellow");
+//selector('#output').css("background", "yellow");     //funciona
 
 if(selector("#output child").find('#pivot').length) {
 	 alert('encontro');
 	} else {
 	 // no table found
-		alert('nada de nada');
+	
 	}
 
 //selector( "#output li:nth-child(2)" ).append( "<span> - 2nd!</span>" );

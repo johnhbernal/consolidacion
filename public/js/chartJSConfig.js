@@ -1,4 +1,5 @@
 var array = [];
+var arrayMargen = [];
 function progreso() {
 
 	var jsonData = selector.ajax({
@@ -8,72 +9,142 @@ function progreso() {
 
 		result.forEach(function(item) {
 
-			//					console.log(item);
+			// console.log(item);
 
-			array.push(item.VentaActual);
 			array.push(item.VentaAnterior);
+			array.push(item.VentaActual);
 			array.push(item.PptoMlocal);
 			array.push(item.Cump);
 			array.push(item.Crec);
 
 			graficaDinamica(array);
+			// GraficaDinamicaMargen();
 
 		});
 	});
+
+	var jsonDataMargen = selector.ajax({
+		url : 'tblGraficosMargen',
+		dataType : 'json',
+	}).done(function(resultMargen) {
+
+		resultMargen.forEach(function(itemMargen) {
+
+			arrayMargen.push(itemMargen.Margen);
+			arrayMargen.push(itemMargen.Meta);
+
+			GraficaDinamicaMargen(arrayMargen);
+
+		});
+	});
+	
+//	var chartData = {
+//		    labels: ["January", "February", "March", "April", "May", "June"],
+//		    datasets: [
+//		        {
+//		            fillColor: "#79D1CF",
+//		            strokeColor: "#79D1CF",
+//		            data: [60, 80, 81, 56, 55, 40]
+//		        }
+//		    ]
+//		};
+//	
+//	new Chart(document.getElementById("bar-chart"), {
+//		type : 'bar',
+//	    showTooltips: false,
+//	    onAnimationComplete: function () {
+//
+//	        var ctx = this.chart.ctx;
+//	        ctx.font = this.scale.font;
+//	        ctx.fillStyle = this.scale.textColor
+//	        ctx.textAlign = "center";
+//	        ctx.textBaseline = "bottom";
+//
+//	        this.datasets.forEach(function (dataset) {
+//	            dataset.bars.forEach(function (bar) {
+//	                ctx.fillText(data[0], bar.x, bar.y - 5);
+//	            });
+//	        })
+//	    }
+//	});
 
 	function graficaDinamica(array) {
 
 		new Chart(document.getElementById("bar-chart"), {
 			type : 'bar',
+//			_______________
+//			_______________
 			data : {
-				type: "column",
-				indexLabel: "high",
-				labels : [ "VentaActual", "VentaAnterior", "PptoMlocal"],
-//					,"%Cump", "%Crec" ],
+				  animation: false,
+				    responsive : true,
+				    tooltipTemplate: "<%= value %>",
+				    tooltipFillColor: "rgba(0,0,0,0)",
+				    tooltipFontColor: "#444",
+				    tooltipEvents: [],
+				    tooltipCaretSize: 0,
+				    onAnimationComplete: function()
+				    {
+				        this.showTooltip(this.datasets[0].bars, true);
+				    },
+				position : "top",
+				 type : "column",
+				 indexLabel : "high",
 				datasets : [ {
-					label : "Venta Actual",
-					position: "top",
-					backgroundColor : "rgb(157, 195, 230)",
-					data : [array[0]]
-				}, {
 					label : "Venta Anterior",
-					position: "top",
+					backgroundColor : "rgb(157, 195, 230)",
+					data : [ array[0] ]
+				}, {
+					label : "Venta Actual",
 					backgroundColor : "rgb(255, 192, 0)",
 					data : [ array[1] ]
 				}, {
 					label : "PptoMlocal",
-					position: "top",
 					backgroundColor : "rgb(237, 125, 49)",
 					data : [ array[2] ]
 				},
-				
-//				{
-//					label : "%Cump",
-//					backgroundColor : "rgb(237, 125, 49)",
-//					data : [ array[3] ]
-//				},{
-//					label : "%Crec",
-//					backgroundColor : "rgb(237, 125, 49)",
-//					data : [ array[4] ]
-//				}
-				
+
+				{
+					type : 'bubble',
+					label : "%Cump",
+//					indexLabel : "high",
+
+					backgroundColor : "rgba(255, 255, 255, 0.8)", 
+					data : [ 
+							{x: 5},
+				            {y: array[3]},
+				            { r: 5 }
+							
+						]
+				}, {
+					type : 'bubble',
+//					indexLabel : "high",
+					display: false,
+					label : "%Crec",
+					backgroundColor : "rgba(255, 255, 255, 0.8)",
+					data : [ 
+						array[4]  
+						
+						
+						]
+				}
+
 				]
 			},
 			options : {
 				legend : {
 					display : true,
-					  position: 'right',
-				      labels: {
-				        fontColor: "#000000",
-				      },
-				      scales: {
-				          yAxes: [{
-				        	stacked: true,
-				            ticks: {
-				              beginAtZero: false
-				            }
-				          }]
-				      }
+					position : 'right',
+					labels : {
+						fontColor : "#000000",
+					},
+					scales : {
+						yAxes : [ {
+							stacked : true,
+							ticks : {
+								beginAtZero : false
+							}
+						} ]
+					}
 				},
 				title : {
 					display : true,
@@ -82,64 +153,40 @@ function progreso() {
 			}
 		});
 
-
-		
-		new Chart(document.getElementById("bar-chart-grouped"), {
-		    type: 'bar',
-		    data: {
-		      labels: ["", "Linea", ""],
-		      datasets: [{
-		          label: "Meta",
-		          type: "line",
-		          borderColor: "rgb(010, 010, 010)",
-		          position: "top",
-				  backgroundColor : "rgb(010, 010, 010)",
-		          data: [730,730,730],
-		          fill: false
-		        }, {
-		          label: "Margen",
-		          type: "bar",
-		          position: "top",
-		          backgroundColor : "rgb(237, 125, 49)",
-		          data: [0,734,0],
-		        }
-		      ]
-		    },
-		    options: {
-		      title: {
-		        display: true,
-		        text: 'Cumplimiento Margen Contribución Acumulado '
-		      },
-		      legend: { display: false }
-		    }
-		});
-
-	}
-	;
-};
-
+	};
 /*
- * function drawLineChart() {
- *  // Add a helper to format timestamp data Date.prototype.formatMMDDYYYY =
- * function() { return (this.getMonth() + 1) + "/" + this.getDate() + "/" +
- * this.getFullYear(); }
- * 
- * var jsonData = selector.ajax({ url :
- * 'http://d.microbuilder.io:8080/test/temp', dataType : 'json',
- * }).done(function(results) {
- *  // Split timestamp and data into separate arrays var labels = [], data = [];
- * results["packets"].forEach(function(packet) { labels.push(new
- * Date(packet.timestamp).formatMMDDYYYY());
- * data.push(parseFloat(packet.payloadString)); });
- *  // Create the chart.js data structure using 'labels' and 'data' var tempData = {
- * labels : labels, datasets : [ { fillColor : "rgba(151,187,205,0.2)",
- * strokeColor : "rgba(151,187,205,1)", pointColor : "rgba(151,187,205,1)",
- * pointStrokeColor : "#fff", pointHighlightFill : "#fff", pointHighlightStroke :
- * "rgba(151,187,205,1)", data : data } ] };
- *  // Get the context of the canvas element we want to select var ctx =
- * document.getElementById("bar-chart").getContext("2d");
- *  // Instantiate a new chart var myLineChart = new Chart(ctx).Line(tempData);
- * }); };
- * 
- * drawLineChart();
+ * Funcion utilizada para mostrar el margen de ganancia
  */
+	function GraficaDinamicaMargen(arrayMargen) {
+		new Chart(document.getElementById("bar-chart-grouped"), {
+			type : 'bar',
+			data : {
+				labels : [ "", "Linea", "" ],
+				datasets : [ {
+					label : "Meta",
+					type : "line",
+					borderColor : "rgb(010, 010, 010)",
+					position : "top",
+					backgroundColor : "rgb(010, 010, 010)",
+					data : [ arrayMargen[1], arrayMargen[1], arrayMargen[1] ],
+					fill : false
+				}, {
+					label : "Margen",
+					type : "bar",
+					position : "top",
+					backgroundColor : "rgb(237, 125, 49)",
+					data : [ 0, arrayMargen[0], 0 ],
+				} ]
+			},
+			options : {
+				title : {
+					display : true,
+					text : 'Cumplimiento Margen Contribución Acumulado '
+				},
+				legend : {
+					display : false
+				}
+			}
+		});
+	}
+};
