@@ -948,7 +948,11 @@
         };
       }
       result = document.createElement("table");
-      result.className = "pvtTable table table-striped table-bordered nowrap dataTable no-footer";
+      result.className = "pvtTable";
+//      result.attr('id','test');
+//      console.info(result);
+//      return false;
+//      result.attr('id', 'pivot2');
       spanSize = function(arr, i, j) {
         var l, len, n, noDraw, ref, ref1, stop, x;
         if (i !== 0) {
@@ -1258,11 +1262,11 @@
           }
           return recordsProcessed++;
         });
-        uiTable = $("<table class='table table-striped table-bordered nowrap dataTable no-footer col-sm-12'>", {
+        uiTable = $("<table id='pivot' class='table table-striped table-bordered nowrap'>", {
           "class": "pvtUi"
         }).attr("cellpadding", 5);
         rendererControl = $("<td>");
-        renderer = $("<select class='form-control'>").addClass('pvtRenderer').appendTo(rendererControl).bind("change", function() {
+        renderer = $("<select>").addClass('pvtRenderer').appendTo(rendererControl).bind("change", function() {
           return refresh();
         });
         ref = opts.renderers;
@@ -1321,7 +1325,7 @@
               sorter = getSort(opts.sorters, attr);
               placeholder = opts.localeStrings.filterResults;
               $("<input>", {
-                type: "text form-control"
+                type: "text"
               }).appendTo(controls).attr({
                 placeholder: placeholder,
                 "class": "pvtSearch"
@@ -1437,13 +1441,13 @@
           fn1(attr);
         }
         tr1 = $("<tr>").appendTo(uiTable);
-        aggregator = $("<select class='form-control' data-live-search='true'>").addClass('pvtAggregator').bind("change", function() {
+        aggregator = $("<select>").addClass('pvtAggregator').bind("change", function() {
           return refresh();
         });
         ref1 = opts.aggregators;
         for (x in ref1) {
           if (!hasProp.call(ref1, x)) continue;
-          aggregator.append($("<option data-tokens>").val(x).html(x));
+          aggregator.append($("<option>").val(x).html(x));
         }
         ordering = {
           key_a_to_z: {
@@ -1538,7 +1542,7 @@
             if (numInputsToProcess !== 0) {
               pvtVals = _this.find(".pvtVals");
               for (x = t = 0, ref5 = numInputsToProcess; 0 <= ref5 ? t < ref5 : t > ref5; x = 0 <= ref5 ? ++t : --t) {
-                newDropdown = $("<select class='form-control'>").addClass('pvtAttrDropdown').append($("<option>")).bind("change", function() {
+                newDropdown = $("<select>").addClass('pvtAttrDropdown').append($("<option>")).bind("change", function() {
                   return refresh();
                 });
                 for (u = 0, len4 = shownAttributes.length; u < len4; u++) {
@@ -1745,7 +1749,7 @@
           return forEachCell(function(x, elem) {
             var text, wrapper;
             text = elem.text();
-            wrapper = $("<div>").css({
+            wrapper = $("<div class='prueba'>").css({
               "position": "relative",
               "height": "55px"
             });

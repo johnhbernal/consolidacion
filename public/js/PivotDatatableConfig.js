@@ -64,6 +64,49 @@ function consolidacion() {
 		// selector(function() {
 		// showConsolidacion();
 		// });
+		
 
 	});
+	
+//	selector('#output').find('.pvtTable').style.color = "blue";
+console.log(selector('#output').find('table').find('.pvtTable'));
+selector('#output').append( "<span> - 2nd!</span>" );
+
+selector('#output').find('#pivot').css("background", "yellow");
+
+if(selector("#output child").find('#pivot').length) {
+	 alert('encontro');
+	} else {
+	 // no table found
+		alert('nada de nada');
+	}
+
+//selector( "#output li:nth-child(2)" ).append( "<span> - 2nd!</span>" );
+	
+	selector('#output').find('.pvtTable').each(function() {
+		
+		console.log('entro en el each ');
+		console.log(this);
+		return false;
+		this.style.color = "blue";
+	});
+	
+//	selector( ".output" ).style.color = "blue";
+	selector( ".output" ).each(function() {
+		selector( this )
+//		this.style.color = "blue";
+		  console.log('vamos a ver si se ejecuta esta miercoles  '+selector( this ));
+		});
+	console.log('mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm');
+//	var tables = selector('.pvtTable').DataTable();
+	
+//	var tablePivot = selector('.pvtTable').DataTable({
+//		
+//		
+//        "responsive": true,
+//        "responsive": true,
+//		"processing": true,
+//        "serverSide": true,
+//        "pagingType": "full_numbers",
+//});
 };

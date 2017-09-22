@@ -7,6 +7,12 @@
 <link href="{{ asset('/css/chart.css') }}" rel="stylesheet">
 <!-- ____termina pivot css-->
 
+<!-- ___ empieza datatableResponsive css -->
+<link href="{{ asset('/css/dataTable/dataTables.bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('/css/dataTable/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('/css/dataTable/responsive.bootstrap.min.css') }}" rel="stylesheet">
+<!-- ____termina datatableResponsive css-->
+
 <link href="{{ asset('/jqueryConfirm/css/jquery-confirm.min.css') }}"
 	rel="stylesheet">
 <script src="{{ asset('js/datatable/jquery.dataTables.min.js') }}"></script>
@@ -25,6 +31,19 @@
 <script src="{{ asset('js/pivotTable/jquery.ui.touch-punch.min.js') }}"></script>
 
 <!-- ____termina pivot -->
+
+<!-- __Empieza selectPicker -->
+<link href="{{ asset('/css/bootstrapSelect/bootstrap-select.min.css') }}" rel="stylesheet">
+<script src="{{ asset('js/bootstrapSelect/bootstrap-select.min.js') }}"></script>
+<!-- __Termina selectPicker -->
+
+<!-- __Empieza datatableResponsive js -->
+<script src="{{ asset('js/datatable/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/datatable/dataTables.fixedHeader.min.js') }}"></script>
+<script src="{{ asset('js/datatable/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('js/datatable/responsive.bootstrap.min.js') }}"></script>
+
+<!-- __Termina datatableResponsive js -->
 
 <!-- <script src="{{ asset('js/datatable/dataTables.editor.min.js') }}"></script> -->
 <script src="{{ asset('js/PivotDatatableConfig.js') }}"></script>
@@ -128,6 +147,15 @@
 			</div>
 			<div id="collapseThree" class="panel-collapse collapse in">
 				<div class="panel-body" style="padding-left: 5%;">
+				<div class="form-group">
+      <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Please select a lunch ..." data-style="btn-danger" multiple data-done-button="true">
+        <option>Hot Dog, Fries and a Soda</option>
+        <option>Burger, Shake and a Smile</option>
+        <option>Sugar, Spice and all things nice</option>
+        <option>Baby Back Ribs</option>
+        <option>A really really long option made to illustrate an issue with the live search in an inline form</option>
+      </select>
+    </div>
 					<div class="row" style="width: 96%;">
 						<div class="d-flex justify-content-center" id="output"
 							style="margin: 30px;"></div>

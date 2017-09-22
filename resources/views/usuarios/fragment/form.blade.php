@@ -9,6 +9,11 @@
 <script src="{{ asset('/js/script.js') }}"></script>
 <script src="{{ asset('/js/validation/usuForm.js') }}"></script>
 
+<!-- __Empieza selectPicker -->
+<link href="{{ asset('/css/bootstrapSelect/bootstrap-select.min.css') }}" rel="stylesheet">
+<script src="{{ asset('js/bootstrapSelect/bootstrap-select.min.js') }}"></script>
+<!-- __Termina selectPicker -->
+
 
 <!-- 	<script src="public/js/script.js"></script> -->
 

@@ -3,6 +3,7 @@ selector(document).ready(function() {
 	
 		var table = selector('#dataTableUsuarios').DataTable({
 			
+			"responsive": true,
 			"processing": true,
 	        "serverSide": true,
 	        "ajax": "../public/datatable",

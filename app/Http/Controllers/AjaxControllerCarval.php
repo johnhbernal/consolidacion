@@ -73,4 +73,21 @@ class AjaxControllerCarval extends Controller
             $organizacion
         )));
     }
+    public static function getGraficoMargen()
+    
+    {
+        $organizacion = 'CO-Carval Nal';
+        $organizacion = '%' . $organizacion . '%';
+        
+        return json_encode($consolidacion = DB::connection('sqlsrv')->select('SELECT
+        SUM (ISNULL([VentaMGActual],0)) VentaActual
+        ,SUM (ISNULL([VentaMGAnterior],0)) VentaAnterior
+        ,SUM (ISNULL([PptoMlocal],0)) PptoMlocal
+        ,SUM (ISNULL([VentaMGActual],0))/SUM (ISNULL([PptoMlocal],0))*100 AS Cump
+            ,(SUM (ISNULL([VentaMGActual],0))-SUM (ISNULL([VentaMGAnterior],0)) )/SUM (ISNULL([VentaMGAnterior],0))*100  AS Crec
+                FROM [INReportes].[dbo].[BI_PRESUPUESTOS]
+                 WHERE [OrgVentas] LIKE ?', array(
+            $organizacion
+        )));
+    }
 }
