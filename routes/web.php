@@ -65,6 +65,7 @@ Route::prefix ( 'admin' )->group ( function () {
 	    Route::get('/tblGraficosMargen',function () {
 	        return AjaxControllerCarval::getGraficoMargen();
 	    });
+	    Route::get('/datatableINDMVentas', 'AjaxControllerCarval@getDatabaseVentas');
 	
 // 	Route::get('/showUser/{id}', 'AjaxController@mostrarUsuario');
 

@@ -1262,9 +1262,10 @@
           }
           return recordsProcessed++;
         });
-        uiTable = $("<table id='pivot' class='table table-striped table-bordered nowrap'>", {
+        uiTable = $("<table class='table table-striped table-bordered nowrap'>", {
           "class": "pvtUi"
         }).attr("cellpadding", 5);
+        
         rendererControl = $("<td>");
         renderer = $("<select>").addClass('pvtRenderer').appendTo(rendererControl).bind("change", function() {
           return refresh();
@@ -1440,7 +1441,7 @@
           attr = shownAttributes[i];
           fn1(attr);
         }
-        tr1 = $("<tr>").appendTo(uiTable);
+        tr1 = $("<tr>").appendTo(uiTable); 
         aggregator = $("<select>").addClass('pvtAggregator').bind("change", function() {
           return refresh();
         });
@@ -1481,7 +1482,7 @@
           return refresh();
         });
         $("<td>").addClass('pvtVals').appendTo(tr1).append(aggregator).append(rowOrderArrow).append(colOrderArrow).append($("<br>"));
-        $("<td>").addClass('pvtAxisContainer pvtHorizList pvtCols').appendTo(tr1);
+        $("<td>").addClass('pvtAxisContainer pvtHorizList pvtCols').appendTo(tr1);  
         tr2 = $("<tr>").appendTo(uiTable);
         tr2.append($("<td>").addClass('pvtAxisContainer pvtRows').attr("valign", "top"));
         pivotTable = $("<td>").attr("valign", "top").addClass('pvtRendererArea').appendTo(tr2);
@@ -1645,6 +1646,9 @@
           items: 'li',
           placeholder: 'pvtPlaceholder'
         });
+        
+        
+        
       } catch (_error) {
         e = _error;
         if (typeof console !== "undefined" && console !== null) {
@@ -1749,7 +1753,7 @@
           return forEachCell(function(x, elem) {
             var text, wrapper;
             text = elem.text();
-            wrapper = $("<div class='prueba'>").css({
+            wrapper = $("<div>").css({
               "position": "relative",
               "height": "55px"
             });

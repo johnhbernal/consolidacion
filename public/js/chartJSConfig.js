@@ -75,17 +75,6 @@ function progreso() {
 //			_______________
 //			_______________
 			data : {
-				  animation: false,
-				    responsive : true,
-				    tooltipTemplate: "<%= value %>",
-				    tooltipFillColor: "rgba(0,0,0,0)",
-				    tooltipFontColor: "#444",
-				    tooltipEvents: [],
-				    tooltipCaretSize: 0,
-				    onAnimationComplete: function()
-				    {
-				        this.showTooltip(this.datasets[0].bars, true);
-				    },
 				position : "top",
 				 type : "column",
 				 indexLabel : "high",

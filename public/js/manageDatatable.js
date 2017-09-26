@@ -1,12 +1,14 @@
 selector = $.noConflict();
 selector(document).ready(function() {
 	
-		var table = selector('#dataTableUsuarios').DataTable({
+		 
+			var table = selector('#dataTableINDMVentas').DataTable({
 			
 			"responsive": true,
 			"processing": true,
 	        "serverSide": true,
-	        "ajax": "../public/datatable",
+	        "deferRender": true,
+	        "ajax": "../public/datatableINDMVentas",
 	        "columnDefs": [
 	            {
 	                "targets": 0,
@@ -23,10 +25,19 @@ selector(document).ready(function() {
 	            
 	            
             "columns": [
-            	{data: 'updated_at', name: 'updated_at'},
+            	
+            	
+            
+            	
+            	
+            	{
+            		
+            		
+//            		data: 'IdDimClientes', name: 'IdDimClientes'},
+            		data: 'IdDimClientes', name: 'IdDimClientes'},
 //                {data: 'id', name: 'id'},
                 { 
-                    "data": "id",
+                    "data": "IdCliente",
                     "render": function(data, type, row, meta){
                        if(type === 'display'){
                     	   
@@ -37,11 +48,11 @@ selector(document).ready(function() {
                        return data;
                     }
                  },
-            	{data: 'NUM_IDENTIFICACION', name: 'NUM_IDENTIFICACION'},
-                {data: 'PRIMER_NOMBRE', name: 'PRIMER_NOMBRE'},
-                {data: 'SEGUNDO_NOMBRE', name: 'SEGUNDO_NOMBRE'},
-                {data: 'PRIMER_APELLIDO', name: 'PRIMER_APELLIDO'},
-                {data: 'SEGUNDO_APELLIDO', name: 'SEGUNDO_APELLIDO'},
+            	{data: 'NombreCliente', name: 'NombreCliente'},
+                {data: 'OrgVentas', name: 'OrgVentas'},
+                {data: 'Ciudad', name: 'Ciudad'},
+                {data: 'NombreComercial', name: 'NombreComercial'},
+                {data: 'Vendedor', name: 'Vendedor'},
                 {
                     data: {data: 'id'},
                     className: "inline",
@@ -54,19 +65,87 @@ selector(document).ready(function() {
                        
                         return '<form action="./deleteUsuarios/'+DeleteID+'" method="DELETE" value="delete"><input type="hidden" name="_method" value="DELETE"><a  id='+DeleteID+' class="btn-delete" data-token="{{ csrf_token() }}"> &nbsp; &nbsp; <i class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Eliminar Usuario"></i></a> &nbsp; &nbsp; &nbsp;<a id='+EditID+' class="btn-update"> <i class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar Usuario"></i></a></from></div>';
                     }
-                }
+                },
             ],
 			"language" : {
 				"url" : "./json/Spanish.json"
 			},
-			"order": [[ 1, "desc" ]],
+			"order": [[ 1, "asc" ]],
 //			"bPaginate": false,
 //		    "bLengthChange": false,
 //		    "bFilter": true,
 //		    "bInfo": false,
 //		    "bAutoWidth": false,
-			"pagingType": "full_numbers",
+//			"pagingType": "full_numbers",
+//			 "autoWidth": false
 
+		}); 
+		var table = selector('#dataTableUsuarios').DataTable({
+			
+			"responsive": true,
+			"processing": true,
+			"serverSide": true,
+			"ajax": "../public/datatable",
+			"columnDefs": [
+				{
+					"targets": 0,
+					"visible": false,
+					"searchable": false,
+				},
+				{ 
+					
+					"targets": -1,
+					"visible": true,
+					"searchable": false,
+					"orderable": false,
+				}],
+				
+				
+				"columns": [
+					{data: 'updated_at', name: 'updated_at'},
+//                {data: 'id', name: 'id'},
+					{ 
+						"data": "id",
+						"render": function(data, type, row, meta){
+							if(type === 'display'){
+								
+//                           data = '<a href="' + data + '" class="showUser" id='+data+'>' + data + '</a>';
+								data = '<a id='+data+' href="' + data + '" class="showUser" id='+data+'>' + data + '</a>';
+							}
+							
+							return data;
+						}
+					},
+					{data: 'NUM_IDENTIFICACION', name: 'NUM_IDENTIFICACION'},
+					{data: 'PRIMER_NOMBRE', name: 'PRIMER_NOMBRE'},
+					{data: 'SEGUNDO_NOMBRE', name: 'SEGUNDO_NOMBRE'},
+					{data: 'PRIMER_APELLIDO', name: 'PRIMER_APELLIDO'},
+					{data: 'SEGUNDO_APELLIDO', name: 'SEGUNDO_APELLIDO'},
+					{
+						data: {data: 'id'},
+						className: "inline",
+						defaultContent: ' &nbsp;<a href=""> <i class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar Usuario"></i></a> &nbsp; &nbsp;<a class="btn-delete"> <i class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Eliminar Usuario"></i></a>',
+						
+						"render": function ( data, type, full, meta ) {
+							
+							var DeleteID = full.id;
+							var EditID = full.id;
+							
+							return '<form action="./deleteUsuarios/'+DeleteID+'" method="DELETE" value="delete"><input type="hidden" name="_method" value="DELETE"><a  id='+DeleteID+' class="btn-delete" data-token="{{ csrf_token() }}"> &nbsp; &nbsp; <i class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Eliminar Usuario"></i></a> &nbsp; &nbsp; &nbsp;<a id='+EditID+' class="btn-update"> <i class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar Usuario"></i></a></from></div>';
+						}
+					}
+					],
+					"language" : {
+						"url" : "./json/Spanish.json"
+					},
+					"order": [[ 1, "desc" ]],
+//			"bPaginate": false,
+//		    "bLengthChange": false,
+//		    "bFilter": true,
+//		    "bInfo": false,
+//		    "bAutoWidth": false,
+					"pagingType": "full_numbers",
+					
 		});
 
 		

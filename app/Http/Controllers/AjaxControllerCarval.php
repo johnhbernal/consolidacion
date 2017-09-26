@@ -1,7 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Yajra\Datatables\Datatables;
 use Carbon\Carbon;
 
 class AjaxControllerCarval extends Controller
@@ -22,6 +24,14 @@ class AjaxControllerCarval extends Controller
         // funciona no dañar
         
         return json_encode($consolidacion = DB::connection('sqlsrv')->
+        // ->select('SELECT * FROM INReportes.dbo.BI_PRESUPUESTOS'));
+        select('SELECT TOP 100 [VentaMLActual]
+      ,[VentaMLAnterior]
+      ,[VentaMGActual]
+      ,[MesNombre]
+      ,[Linea]
+  FROM [INReportes].[dbo].[BI_PRESUPUESTOS]'));
+      /*  return json_encode($consolidacion = DB::connection('sqlsrv')->
         // ->select('SELECT * FROM INReportes.dbo.BI_PRESUPUESTOS'));
         select('SELECT TOP 100 [VentaMLActual]
       ,[VentaMLAnterior]
@@ -48,7 +58,7 @@ class AjaxControllerCarval extends Controller
       ,[Intercompany]
       ,[VendFilter]
       ,[Fecha]
-  FROM [INReportes].[dbo].[BI_PRESUPUESTOS]'));
+  FROM [INReportes].[dbo].[BI_PRESUPUESTOS]'));*/
     }
 
     /**
@@ -91,13 +101,76 @@ class AjaxControllerCarval extends Controller
                                     )AS VentaML
                         FROM [INReportes].[dbo].[BI_VENTAS]');
         
-        $margen['Margen'] = (1 - $consulParaMargen[0]->CostoML / $consulParaMargen[0]->VentaML)*100;
+        $margen['Margen'] = (1 - $consulParaMargen[0]->CostoML / $consulParaMargen[0]->VentaML) * 100;
         $consulParaMargen[0]->Margen = $margen['Margen'];
-       
-        /*poner valor en una columna*/
-        $consulParaMargen[0]->Meta = 50 ;
-
+        
+        /* poner valor en una columna */
+        $consulParaMargen[0]->Meta = 50;
         
         return json_encode($consulParaMargen);
+    }
+
+    /*
+     * Funcion utilizada para mostrar los datos de la base de datos de ventas
+     * 1-consto/venta
+     */
+    public static function getDatabaseVentas(Request $request)
+    
+    {
+        try {
+            
+            // $resultDeleteUsuario = $usuario->delete ();
+            $response;
+            
+            
+            
+//             echo '<pre>';
+//             print_r(' epa que paso  ');
+//             // print_r($id);
+//             echo '</pre>';
+//             die(__FILE__ . ' ' . __LINE__);
+            
+            return Datatables::of(DB::connection('sqlsrv')->select('
+                                                SELECT TOP 100 [IdDimClientes]
+                                                      ,[IdSociedad]
+                                                      ,[Sociedad]
+                                                      ,[IdOrgVentas]
+                                                      ,[OrgVentas]
+                                                      ,[IdPais]
+                                                      ,[IdDepto]
+                                                      ,[Departamento]
+                                                      ,[Ciudad]
+                                                      ,[IdVendedor]
+                                                      ,[Vendedor]
+                                                      ,[IdClientePadre]
+                                                      ,[ClientePadre]
+                                                      ,[IdCliente]
+                                                      ,[NombreCliente]
+                                                      ,[NombreComercial]
+                                                  FROM [INDMVentas].[dbo].[DimClientes]
+
+                                                '))->make(true);
+            
+            echo '<pre>';
+            print_r(' epa que paso  ');
+            // print_r($id);
+            echo '</pre>';
+            die(__FILE__ . ' ' . __LINE__);
+            /*
+             * if () {
+             *
+             * } else {
+             *
+             *
+             * return response ()->json ( 'Error al intentar eliminar el usuario.' );
+             * }
+             */
+        } catch (\Exception $e) {
+            // return response()->json($e->getMessage());
+            return response()->json('error en catch AjaxControllerCarval' + $e->getCode());
+        }
+        
+        // return \Response::json($response);
+        // return json_encode($customer_response, JSON_PRETTY_PRINT);
     }
 }

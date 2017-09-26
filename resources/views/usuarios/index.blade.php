@@ -96,16 +96,53 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
+<div class="row">
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">
 					<a data-toggle="collapse" data-parent="#accordion"
-						href="#collapseTwo">Listado de Usuarios</a>
+						href="#collapseTwo">Listado de Ventas</a>
 				</h3>
 			</div>
 			<div id="collapseTwo" class="panel-collapse collapse in">
+				<div class="panel-body" style="padding-left: 5%;">
+					<div class="row" style="width: 96%;">
+						<div class="chart-stage">
+							<table id="dataTableINDMVentas"
+								class="table table-striped table-bordered nowrap" style="width: 96%;">
+
+								<thead>
+									<tr>
+										<td><p>Actualizacion</p></td>
+										<td width="20px"><p class="text-center">ID</p></td>
+										<td><p class="text-center">n. Cliente</p></td>
+										<td><p class="text-center">Org. de Ventas</p></td>
+										<td><p class="text-center">Ciudad</p></td>
+										<td><p class="text-center">n. Comercial</p></td>
+										<td><p class="text-center">Vendedor</p></td>
+										<td><p class="text-center">&nbsp;Acciones</p></td>
+									</tr>
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="row">
+
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h3 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion"
+						href="#collapseTwoLocal">Listado de Usuarios</a>
+				</h3>
+			</div>
+			<div id="collapseTwoLocal" class="panel-collapse collapse in">
 				<div class="panel-body" style="padding-left: 5%;">
 					<div class="row" style="width: 96%;">
 						<div class="chart-stage">
@@ -117,7 +154,7 @@
 
 								<thead>
 									<tr>
-										<!-- 				<td width="20px"></td> -->
+
 										<td><p>Actualizacion</p></td>
 										<td width="20px"><p class="text-center">ID</p></td>
 										<td><p class="text-center">Número de identificación</p></td>
@@ -137,6 +174,8 @@
 			</div>
 		</div>
 	</div>
+	
+	
 	<div class="row">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -148,17 +187,18 @@
 			<div id="collapseThree" class="panel-collapse collapse in">
 				<div class="panel-body" style="padding-left: 5%;">
 				<div class="form-group">
-      <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Please select a lunch ..." data-style="btn-danger" multiple data-done-button="true">
-        <option>Hot Dog, Fries and a Soda</option>
-        <option>Burger, Shake and a Smile</option>
-        <option>Sugar, Spice and all things nice</option>
-        <option>Baby Back Ribs</option>
-        <option>A really really long option made to illustrate an issue with the live search in an inline form</option>
-      </select>
-    </div>
+<!--       <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Please select a lunch ..." data-style="btn-danger" multiple data-done-button="true"> -->
+<!--         <option>Hot Dog, Fries and a Soda</option> -->
+<!--         <option>Burger, Shake and a Smile</option> -->
+<!--         <option>Sugar, Spice and all things nice</option> -->
+<!--         <option>Baby Back Ribs</option> -->
+<!--         <option>A really really long option made to illustrate an issue with the live search in an inline form</option> -->
+<!--       </select> -->
+<!--     </div> -->
 					<div class="row" style="width: 96%;">
 						<div class="d-flex justify-content-center" id="output"
-							style="margin: 30px;"></div>
+							style="width: 96%; "style="margin: 30px;">
+						</div>
 					</div>
 				</div>
 			</div>

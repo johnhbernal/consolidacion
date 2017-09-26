@@ -3,7 +3,7 @@
 table.pvtTable {
     font-size: 8pt;
     text-align: left;
-    border-collapse: collapse;
+    border-collapse: collapse; 
 }
 table.pvtTable thead tr th, table.pvtTable tbody tr th {
     background-color: #e6EEEE;
@@ -45,6 +45,7 @@ table.pvtTable tbody tr td {
     padding: 8px 6px;
     list-style-type: none;
     cursor:move;
+    background-color: lightgreen;
 }
 .pvtAxisContainer li.pvtPlaceholder {
     -webkit-border-radius: 5px;
@@ -70,7 +71,10 @@ table.pvtTable tbody tr td {
     color: grey;
 }
 
-.pvtHorizList li { display: inline; }
+.pvtHorizList li { display: inline;
+
+-webkit-text-size-adjust: 100%;
+ }
 .pvtVertList { vertical-align: top; }
 
 .pvtFilteredAttribute { font-style: italic }
