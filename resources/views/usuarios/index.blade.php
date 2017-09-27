@@ -21,6 +21,22 @@
 <script src="{{ asset('js/datatable/dataTables.select.min.js') }}"></script>
 <script src="{{ asset('/jqueryConfirm/js/jquery-confirm.min.js') }}"></script>
 
+<!-- __Empieza selectPicker -->
+<link href="{{ asset('/css/bootstrapSelect/bootstrap-select.min.css') }}" rel="stylesheet">
+<script src="{{ asset('js/bootstrapSelect/bootstrap-select.min.js') }}"></script>
+<!-- __Termina selectPicker -->
+
+
+
+
+<!-- __Empieza datatableResponsive js -->
+<script src="{{ asset('js/datatable/dataTables.bootstrap.min.js') }}"></script>
+<script src="{{ asset('js/datatable/dataTables.fixedHeader.min.js') }}"></script>
+<script src="{{ asset('js/datatable/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('js/datatable/responsive.bootstrap.min.js') }}"></script>
+
+<!-- __Termina datatableResponsive js -->
+
 <!-- ___ empieza pivot -->
 <script src="{{ asset('js/pivotTable/pivot.js') }}"></script>
 <script src="{{ asset('js/pivotTable/export_renderers.js') }}"></script>
@@ -31,19 +47,6 @@
 <script src="{{ asset('js/pivotTable/jquery.ui.touch-punch.min.js') }}"></script>
 
 <!-- ____termina pivot -->
-
-<!-- __Empieza selectPicker -->
-<link href="{{ asset('/css/bootstrapSelect/bootstrap-select.min.css') }}" rel="stylesheet">
-<script src="{{ asset('js/bootstrapSelect/bootstrap-select.min.js') }}"></script>
-<!-- __Termina selectPicker -->
-
-<!-- __Empieza datatableResponsive js -->
-<script src="{{ asset('js/datatable/dataTables.bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/datatable/dataTables.fixedHeader.min.js') }}"></script>
-<script src="{{ asset('js/datatable/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('js/datatable/responsive.bootstrap.min.js') }}"></script>
-
-<!-- __Termina datatableResponsive js -->
 
 <!-- <script src="{{ asset('js/datatable/dataTables.editor.min.js') }}"></script> -->
 <script src="{{ asset('js/PivotDatatableConfig.js') }}"></script>

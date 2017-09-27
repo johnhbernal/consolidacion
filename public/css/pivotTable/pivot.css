@@ -109,3 +109,19 @@ table.pvtTable tbody tr td {
 .pvtCheckContainer p{ margin: 5px; }
 
 .pvtRendererArea { padding: 5px;}
+
+table td:first-child {
+	width: 25%;
+}
+ 
+table td:nth-child(2) {
+	width: 25%;
+}
+ 
+table td:nth-child(3) {
+	width: 25%;
+}
+ 
+table td:last-child {
+	width: 50%;
+}

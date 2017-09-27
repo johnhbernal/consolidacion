@@ -1267,7 +1267,7 @@
         }).attr("cellpadding", 5);
         
         rendererControl = $("<td>");
-        renderer = $("<select>").addClass('pvtRenderer').appendTo(rendererControl).bind("change", function() {
+        renderer = $("<select class='form-control'>").addClass('pvtRenderer').appendTo(rendererControl).bind("change", function() {
           return refresh();
         });
         ref = opts.renderers;
@@ -1329,7 +1329,7 @@
                 type: "text"
               }).appendTo(controls).attr({
                 placeholder: placeholder,
-                "class": "pvtSearch"
+                "class": "pvtSearch form-control"
               }).bind("keyup", function() {
                 var accept, accept_gen, filter;
                 filter = $(this).val().toLowerCase().trim();
@@ -1386,7 +1386,7 @@
                 filterItemExcluded = (indexOf.call(opts.exclusions[attr], value) >= 0);
               }
               hasExcludedItem || (hasExcludedItem = filterItemExcluded);
-              $("<input>").attr("type", "checkbox").addClass('pvtFilter').attr("checked", !filterItemExcluded).data("filter", [attr, value]).appendTo(filterItem).bind("change", function() {
+              $("<input>").attr("type", "checkbox").addClass('pvtFilter checkbox').attr("checked", !filterItemExcluded).data("filter", [attr, value]).appendTo(filterItem).bind("change", function() {
                 return $(this).toggleClass("changed");
               });
               filterItem.append($("<span>").addClass("value").text(value));
@@ -1442,7 +1442,7 @@
           fn1(attr);
         }
         tr1 = $("<tr>").appendTo(uiTable); 
-        aggregator = $("<select>").addClass('pvtAggregator').bind("change", function() {
+        aggregator = $("<select class='form-control'>").addClass('pvtAggregator').bind("change", function() {
           return refresh();
         });
         ref1 = opts.aggregators;
@@ -1482,6 +1482,7 @@
           return refresh();
         });
         $("<td>").addClass('pvtVals').appendTo(tr1).append(aggregator).append(rowOrderArrow).append(colOrderArrow).append($("<br>"));
+        
         $("<td>").addClass('pvtAxisContainer pvtHorizList pvtCols').appendTo(tr1);  
         tr2 = $("<tr>").appendTo(uiTable);
         tr2.append($("<td>").addClass('pvtAxisContainer pvtRows').attr("valign", "top"));
@@ -1543,7 +1544,7 @@
             if (numInputsToProcess !== 0) {
               pvtVals = _this.find(".pvtVals");
               for (x = t = 0, ref5 = numInputsToProcess; 0 <= ref5 ? t < ref5 : t > ref5; x = 0 <= ref5 ? ++t : --t) {
-                newDropdown = $("<select>").addClass('pvtAttrDropdown').append($("<option>")).bind("change", function() {
+                newDropdown = $("<select class='form-control'>").addClass('pvtAttrDropdown').append($("<option>")).bind("change", function() {
                   return refresh();
                 });
                 for (u = 0, len4 = shownAttributes.length; u < len4; u++) {
@@ -1787,5 +1788,4 @@
   });
 
 }).call(this);
-
 //# sourceMappingURL=pivot.js.map
