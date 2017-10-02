@@ -8,107 +8,84 @@
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>{{ config('app.name', 'SisSegSoc') }}</title>
+<title>{{ config('app.name', 'Carval') }}</title>
 
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<!-- <link href="{{ asset('/css/jquery-ui.min.css') }}" rel="stylesheet"> -->
+<link href="{{ asset('css/login.css') }}" rel="stylesheet">
+<link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
 <script src="{{ asset('js/app.js') }}"></script>
-<!-- <script src="{{ asset('js/jquery.js') }}"></script> -->
-<!-- <script src="{{ asset('js/jquery-ui.min.js') }}"></script> -->
+
 
 
 <!-- Scripts -->
 </head>
-<body class="keen-dashboard">
-	<div id="app">
-		<nav class="navbar navbar-default navbar-static-top">
-			<div class="container">
-				<div class="navbar-header">
+	<nav class="navbar navbar-default navbar-static-top" id="navProyect">
+<div class="container">
+		<div class="navbar-header">
 
-					<!-- Collapsed Hamburger -->
-					<button type="button" class="navbar-toggle collapsed"
-						data-toggle="collapse" data-target="#app-navbar-collapse">
-						<span class="sr-only">Toggle Navigation</span> <span
-							class="icon-bar"></span> <span class="icon-bar"></span> <span
-							class="icon-bar"></span>
-					</button>
+			<!-- Branding Image -->
+			<a class="navbar-brand" href="{{ url('/') }}"> <span
+				class="glyphicon glyphicon-home"> <!-- {{config('app.name', 'Carval') }}-->
+			</span></a>
 
-					<!-- Branding Image -->
-					<a class="navbar-brand" href="{{ url('/') }}"> {{
-						config('app.name', 'SisSegSoc') }} </a>
-			
-				</div>
-				<ul class="nav navbar-nav navbar-left">
-						 @if (Auth::guard('admin')->check())
-					<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false"> <i
-							class="pe-7s-user"></i> <strong>Opciones de Administrador</strong><span
-							class="caret"></span>
-					</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-						</ul></li> @endif
-					@if (Auth::guard('web')->check())
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false"> <i
-							class="pe-7s-user"></i> <strong>Opciones de usuario</strong><span
-							class="caret"></span>
-					</a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-						</ul></li> @endif
-						
-				</ul>
-				<div class="collapse navbar-collapse" id="app-navbar-collapse">
-					<!-- Left Side Of Navbar -->
-					<ul class="nav navbar-nav">&nbsp;
-					</ul>
+		</div>
+		<ul class="nav navbar-nav navbar-left">
+			@if (Auth::guest()) @else @if (Auth::guard('admin')->check())
+			<li class="dropdown"><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown" role="button" aria-expanded="false"> <i
+					class="pe-7s-user"></i> <strong>Opciones de Administrador</strong><span
+					class="caret"></span>
+			</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Separated link</a></li>
+				</ul></li> @else @endif @if (Auth::guard('web')->check())
+			<li class="dropdown"><a href="#" class="dropdown-toggle"
+				data-toggle="dropdown" role="button" aria-expanded="false"> <i
+					class="pe-7s-user"></i> <strong>Opciones de usuario</strong><span
+					class="caret"></span>
+			</a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Action</a></li>
+					<li><a href="#">Another action</a></li>
+					<li><a href="#">Something else here</a></li>
+					<li class="divider"></li>
+					<li><a href="#">Separated link</a></li>
+				</ul></li> @else @endif @endif
+		</ul>
+		<div class="collapse navbar-collapse" id="app-navbar-collapse">
+			<!-- Left Side Of Navbar -->
+			<ul class="nav navbar-nav">&nbsp;
+			</ul>
 
-					<!-- Right Side Of Navbar -->
-					<ul class="nav navbar-nav navbar-right">
-						<!-- Authentication Links -->
+			<!-- Right Side Of Navbar -->
+			<ul class="nav navbar-nav navbar-right">
+				@if (Auth::guest())
+				<li><a href="{{ route('login') }}">Login</a></li>
+				<li><a href="{{ route('register') }}">Register</a></li> @else
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-expanded="false"><span
+						class="glyphicon glyphicon-user"></span> {{ Auth::user()->name }}
+						<span class="caret"></span> </a>
 
-<!-- 				<li><a href="">Hora 	{{ \Carbon\Carbon::now()->toDateString('dd/mm/YY') }} </a></li> -->
-<!-- 				<li><a href="">Hora 	{{ \Carbon\Carbon::now()->format('l jS \\of F Y h:i:s A')}} </a></li> -->
-						@if (Auth::guest())
-						<li><a href="{{ route('login') }}">Login</a></li>
-						<li><a href="{{ route('register') }}">Register</a></li> @else
-						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false"><span
-								class="glyphicon glyphicon-user"></span> {{ Auth::user()->name
-								}} <span class="caret"></span> </a>
-
-
-
-
-
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="{{ route('logout') }}"
-									onclick="event.preventDefault();
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="{{ route('logout') }}"
+							onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-										<span class="glyphicon glyphicon-off"></span> Logout
-								</a>
+								<span class="glyphicon glyphicon-off"></span> Logout
+						</a>
 
-									<form id="logout-form" action="{{ route('logout') }}"
-										method="POST" style="display: none;">{{ csrf_field() }}</form>
-								</li>
-							</ul></li> @endif
-					</ul>
-				</div>
-			</div>
-		</nav>
+							<form id="logout-form" action="{{ route('logout') }}"
+								method="POST" style="display: none;">{{ csrf_field() }}</form></li>
+					</ul></li> @endif
+			</ul>
+		</div>
 
-		@yield('content')
-	</div>
+	</nav>
+</div>
 
-</body>
-</html>
+@yield('content')
+</div>

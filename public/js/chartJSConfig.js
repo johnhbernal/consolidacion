@@ -16,6 +16,9 @@ function progreso() {
 			array.push(item.PptoMlocal);
 			array.push(item.Cump);
 			array.push(item.Crec);
+			
+			
+			console.log(formatearNumero(item.VentaAnterior));
 
 			graficaDinamica(array);
 			// GraficaDinamicaMargen();
@@ -93,21 +96,20 @@ function progreso() {
 				},
 
 				{
-					type : 'bubble',
+					type : 'line',
 					label : "%Cump",
 //					indexLabel : "high",
-
-					backgroundColor : "rgba(255, 255, 255, 0.8)", 
+					backgroundColor : "rgba(255, 255, 255, 0.8)", 					
 					data : [ 
-							{x: 5},
-				            {y: array[3]},
-				            { r: 5 }
 							
-						]
+				          array[3],
+				           
+							
+						],
 				}, {
-					type : 'bubble',
+					type : 'line',
 //					indexLabel : "high",
-					display: false,
+//					display: false,
 					label : "%Crec",
 					backgroundColor : "rgba(255, 255, 255, 0.8)",
 					data : [ 
@@ -121,8 +123,8 @@ function progreso() {
 			},
 			options : {
 				legend : {
-					display : true,
-					position : 'right',
+					display : false,
+					position : 'top',
 					labels : {
 						fontColor : "#000000",
 					},
@@ -156,13 +158,16 @@ function progreso() {
 					type : "line",
 					borderColor : "rgb(010, 010, 010)",
 					position : "top",
+					 tooltips: {
+						   mode: 'label'
+						 } ,  
 					backgroundColor : "rgb(010, 010, 010)",
 					data : [ arrayMargen[1], arrayMargen[1], arrayMargen[1] ],
 					fill : false
 				}, {
 					label : "Margen",
 					type : "bar",
-					position : "top",
+					position : "top",  
 					backgroundColor : "rgb(237, 125, 49)",
 					data : [ 0, arrayMargen[0], 0 ],
 				} ]
@@ -179,3 +184,15 @@ function progreso() {
 		});
 	}
 };
+
+function formatearNumero(nStr) {
+    nStr += '';
+    x = nStr.split('.');
+    x1 = x[0];
+    x2 = x.length > 1 ? ',' + x[1] : '';
+    var rgx = /(\d+)(\d{3})/;
+    while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + '.' + '$2');
+    }
+    return x1 + x2;
+}
