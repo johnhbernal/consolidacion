@@ -1,21 +1,26 @@
 @extends('layouts.app') 
 @section('content')
-<div class="col-sm-8">
-	<h2>
-	{{$usuario->id}}
-	<a href="{{route('usuarios.edit',$usuario->id)}}" class="btn btn-default pull-right">Editar</a>
-	</h2>
-	<h2>{{$usuario->TIPO_DOCUMENTO }}</h2>
-	<h2>{{$usuario->PRIMER_NOMBRE}}</h2>
-	<h2>{{$usuario->PRIMER_APELLIDO}}</h2>
-	
-	
-   {{ print_r($usuario)}}
+<script src="{{ asset('js/user/show.js') }}"></script>
+@include('usuarios.fragment.error')
 
- 
-	
-@include('usuarios.fragment.form')
+<div class="col-md-10 col-md-offset-1">@include('usuarios.fragment.aside')</div>
+<div class="col-sm-8">
+
+	<h2>
+		<a href="{{route('usuarios.index')}}"
+			class="btn btn-default pull-right">Listar usuarios</a>
+	</h2>
+
+
+
+	{!! Form::model($usuario, ['route' => ['usuarios.update',
+	$usuario->id], 'method' =>
+	'PUT','id'=>'formUsuarioEdit','files'=>true]) !!}
+
+	@include('usuarios.fragment.form') {!! Form::close() !!}
 
 </div>
-<div class="col-sm-4">@include('usuarios.fragment.aside')</div>
 @endsection
+
+
+

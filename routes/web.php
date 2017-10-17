@@ -51,9 +51,9 @@ Route::prefix ( 'admin' )->group ( function () {
 	Route::get('/updateUser/{id}', 'AjaxController@updateUsuario');
 	
 	
-	Route::get('/showUser/{id}', function ($id) {
-		return 'User '.$id;
-	});
+// 	Route::get('/showUser/{id}', function ($id) {
+// 		return 'User '.$id;
+// 	});
 	
 // 	Route::get('/tblConsolidacion','AjaxControllerCarval@getDatosConsolidacion');
 	    Route::get('/tblConsolidacion',function () {
@@ -67,7 +67,7 @@ Route::prefix ( 'admin' )->group ( function () {
 	    });
 	    Route::get('/datatableINDMVentas', 'AjaxControllerCarval@getDatabaseVentas');
 	
-// 	Route::get('/showUser/{id}', 'AjaxController@mostrarUsuario');
+	Route::get('/showUser/{id}', 'AjaxController@mostrarUsuario');
 
 // 	Route::get('/ajaxDataTableUsuarios', function () {
 // 		$users = Usuario::select(['id','NUM_IDENTIFICACION'])->get();

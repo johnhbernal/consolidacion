@@ -25,11 +25,7 @@ selector(document).ready(function() {
 	            
 	            
             "columns": [
-            	
-            	
-            
-            	
-            	
+            		
             	{
             		
             		
@@ -41,8 +37,9 @@ selector(document).ready(function() {
                     "render": function(data, type, row, meta){
                        if(type === 'display'){
                     	   
-//                           data = '<a href="' + data + '" class="showUser" id='+data+'>' + data + '</a>';
-                    	   data = '<a id='+data+' href="' + data + '" class="showUser" id='+data+'>' + data + '</a>';
+//                    	   data = '<a id='+data+' href="' + data + '" class="showUser" id='+data+'>' + data + '</a>';
+//                    	   data = '<a id='+data+' href="' + data + '" class="showUser" id='+data+'>' + data + '</a>';
+                    	   data = '<a id='+data+' class="btn-show">'+data+' <i class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar Usuario"></i></a>';
                        }
 
                        return data;
@@ -110,7 +107,8 @@ selector(document).ready(function() {
 							if(type === 'display'){
 								
 //                           data = '<a href="' + data + '" class="showUser" id='+data+'>' + data + '</a>';
-								data = '<a id='+data+' href="' + data + '" class="showUser" id='+data+'>' + data + '</a>';
+//								data = '<a id='+data+' href="' + data + '" class="showUser" id='+data+'>' + data + '</a>';
+								  data = '<a id='+data+' class="btn-show">'+data+'</a>';
 							}
 							
 							return data;
@@ -124,14 +122,15 @@ selector(document).ready(function() {
 					{
 						data: {data: 'id'},
 						className: "inline",
-						defaultContent: ' &nbsp;<a href=""> <i class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar Usuario"></i></a> &nbsp; &nbsp;<a class="btn-delete"> <i class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Eliminar Usuario"></i></a>',
+						defaultContent: ' &nbsp;<a href=""> <i class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar Usuario"></i></a> &nbsp; &nbsp;<a class="btn-delete"> <i class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Editar Usuario"></i></a> ',
 						
 						"render": function ( data, type, full, meta ) {
 							
 							var DeleteID = full.id;
 							var EditID = full.id;
+							var ShowID = full.id;
 							
-							return '<form action="./deleteUsuarios/'+DeleteID+'" method="DELETE" value="delete"><input type="hidden" name="_method" value="DELETE"><a  id='+DeleteID+' class="btn-delete" data-token="{{ csrf_token() }}"> &nbsp; &nbsp; <i class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Eliminar Usuario"></i></a> &nbsp; &nbsp; &nbsp;<a id='+EditID+' class="btn-update"> <i class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar Usuario"></i></a></from></div>';
+							return '<form action="./deleteUsuarios/'+DeleteID+'" method="DELETE" value="delete"><input type="hidden" name="_method" value="DELETE"><a  id='+DeleteID+' class="btn-delete" data-token="{{ csrf_token() }}"> &nbsp; &nbsp; <i class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Eliminar Usuario"></i></a> &nbsp; &nbsp; &nbsp;<a id='+EditID+' class="btn-update"> <i class="glyphicon glyphicon-pencil" data-toggle="tooltip" title="Editar Usuario"></i></a>  &nbsp; &nbsp; &nbsp;<a id='+ShowID+' class="btn-show"> <i class="glyphicon glyphicon-file" data-toggle="tooltip" title="Mostrar Usuario"></i></a></from></div>';
 						}
 					}
 					],
@@ -277,15 +276,36 @@ selector(document).ready(function() {
 		});	  //end function modify user 
 		
 		
+		/* Función utilizada para mostrar la informacion del  usuario */
+		selector("body").on("click",".btn-show",function(){
+			
+			
+			var id = selector(this).attr('id');
+			
+			console.log('valor de id '+id);
+			
+			var url='./showUser/'+id;
+			
+			
+			console.log(url);
+//			alert(url);
+
+			
+			showUserByAjax(url)
+			
+			
+			
+			
+			
+		});	  //end function show user 
+		
 		/**
 		 * funcion utilizada para redireccionar y mostrar los datos del usuario sin modificar
 		 * @param url
 		 * @returns
 		 */
 		function showUserByAjax(url) {
-			
-			alert('llego a showUser '+url);
-			return false;
+		
 			
 			selector.ajax({				
 				"processing": true,
@@ -293,10 +313,6 @@ selector(document).ready(function() {
 				type:'get',
 				url: url,
 				success: function (response) {
-					
-					
-					alert('llego sera este = '+reponse);
-					console.log('llego sera este = '+reponse);
 					
 					  document.open();
 					    document.write(response);
@@ -315,28 +331,7 @@ selector(document).ready(function() {
 		}
 		
 		
-		/* Función utilizada para mostrar la informacion del  usuario */
-		selector("body").on("click",".showUser",function(){
-			
-			
-			var id = selector(this).attr('id');
-			
-			console.log('valor de id '+id);
-			
-			var url='.../showUser/'+id;
-			
-			
-			console.log(url);
-			alert(url);
-//			return false;
-			
-			showUserByAjax(url)
-			
-			
-			
-			
-			
-		});	  //end function show user 
+
 		
 		
 		

@@ -1,10 +1,11 @@
-@extends('layouts.app') @section('content')
+@extends('layouts.app') 
+@section('content')
 <link href="{{ asset('/css/jquery.dataTables.min.css') }}"
 	rel="stylesheet">
 <!-- ___ empieza pivot css -->
 <link href="{{ asset('/css/pivotTable/c3.min.css') }}" rel="stylesheet">
 <link href="{{ asset('/css/pivotTable/pivot.css') }}" rel="stylesheet">
-<link href="{{ asset('/css/chart.css') }}" rel="stylesheet">
+<!-- <link href="{{ asset('/css/chart.css') }}" rel="stylesheet"> -->
 <!-- ____termina pivot css-->
 
 <!-- ___ empieza datatableResponsive css -->
