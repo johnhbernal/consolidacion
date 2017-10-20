@@ -14,12 +14,13 @@ class CreateNucleoFamiliarsTable extends Migration
     public function up()
     {
         Schema::create('sis_seg_soc_nucleo_familiar', function (Blueprint $table) {
-            $table->increments ( 'CONS_NUCLEO_FAMILIAR' );
+            $table->increments ( 'CONS_NUCLEO_FAMILIAR' )->unique();
             $table->date ( 'FECHA_DE_INSCRIPCION' );
             $table->string ( 'created_by' )->default ( 'admin' );
             $table->softDeletes ();
             $table->timestamps();
         });
+            DB::statement('ALTER TABLE sis_seg_soc_nucleo_familiar CHANGE CONS_NUCLEO_FAMILIAR CONS_NUCLEO_FAMILIAR INT(3) UNSIGNED ZEROFILL NOT NULL');
     }
 
     /**

@@ -242,7 +242,7 @@ class DepartamentosTableSeeder extends Seeder {
 				'created_at' => Carbon::now () 
 		));
 		
- 		factory(Departamento::class,50)->create();
+//  		factory(Departamento::class,50)->create();
     }
 }
 

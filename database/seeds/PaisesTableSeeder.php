@@ -18,7 +18,7 @@ class PaisesTableSeeder extends Seeder {
 				'created_by' => 'admin',
 				'created_at' => Carbon::now () 
 		) );
-		factory ( Pais::class, 50 )->create();
+// 		factory ( Pais::class, 50 )->create();
 	}
 	
 }

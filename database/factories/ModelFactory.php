@@ -200,6 +200,8 @@ $factory->define ( App\Pais::class, function (Faker\Generator $faker) {
 } );
 $factory->define ( NucleoFamiliar::class, function (Faker\Generator $faker) {
 		return [
+		   
+		            'CONS_NUCLEO_FAMILIAR' =>$faker->unique ()->numberBetween ( 0001, 9999 ),
 					'FECHA_DE_INSCRIPCION' => $faker->dateTimeBetween ( $startDate = '-90 years', $endDate = 'now' )
 			   ];
 } );

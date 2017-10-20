@@ -304,7 +304,7 @@ class MunicipiosTableSeeder extends Seeder {
 				'created_at' => Carbon::now()));
 		
 // 		factory(Municipio::class,3300)->create();
-		factory(Municipio::class,300)->create();
+// 		factory(Municipio::class,300)->create();
     	
     }
 }
