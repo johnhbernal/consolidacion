@@ -78,6 +78,13 @@ $factory->define ( App\Pais::class, function (Faker\Generator $faker) {
 							'NOMBRE' => $faker->city . $faker->numberBetween ( 0001, 9999 )
 					];
 				} );
+				$factory->define ( App\Barrio::class, function (Faker\Generator $faker) {
+					return [
+							'CODIGO_BARRIO' => $faker->unique ()->numberBetween ( 00000001, 999999999 ),
+							'CODIGO_MUNICIPIO' => $faker->randomElement ( App\Municipio::pluck ( 'CODIGO_MUNICIPIO' )->toArray () ),
+							'NOMBRE' => $faker->city . $faker->numberBetween ( 0001, 9999 )
+					];
+				} );
 					$factory->define ( App\Usuario::class, function (Faker\Generator $faker) {
 						
 						$loginsIds = User::pluck ( 'id' );
@@ -132,7 +139,7 @@ $factory->define ( App\Pais::class, function (Faker\Generator $faker) {
 								return [
 										
 										'id' => $id,
-										'NUM_IDENTIFICACION' => $faker->unique ()->numberBetween ( 000000001, 999999999 ),
+										'NUM_IDENTIFICACION' => $faker->unique ()->numberBetween ( 000000001, 999999997 ),
 										
 										'LOGIN_ID' => $loginID,
 										// 'user_id' => factory(User::class)->create()->id,
