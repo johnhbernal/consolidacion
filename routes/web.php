@@ -68,6 +68,10 @@ Route::prefix ( 'admin' )->group ( function () {
 	    Route::get('/datatableINDMVentas', 'AjaxControllerCarval@getDatabaseVentas');
 	
 	Route::get('/showUser/{id}', 'AjaxController@mostrarUsuario');
+	
+	Route::get('/showUserByID', 'AjaxControllerUsuario@getUsuarioByID');
+	
+	Route::get('/user/find', ['middleware' => 'auth', 'AjaxControllerUsuario' => 'GroupController@getUsuarioByID']);
 
 // 	Route::get('/ajaxDataTableUsuarios', function () {
 // 		$users = Usuario::select(['id','NUM_IDENTIFICACION'])->get();

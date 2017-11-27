@@ -1,5 +1,4 @@
-@extends('layouts.app') 
-@section('content')
+@extends('layouts.app') @section('content')
 <link href="{{ asset('/css/jquery.dataTables.min.css') }}"
 	rel="stylesheet">
 <!-- ___ empieza pivot css -->
@@ -9,9 +8,12 @@
 <!-- ____termina pivot css-->
 
 <!-- ___ empieza datatableResponsive css -->
-<link href="{{ asset('/css/dataTable/dataTables.bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('/css/dataTable/fixedHeader.bootstrap.min.css') }}" rel="stylesheet">
-<link href="{{ asset('/css/dataTable/responsive.bootstrap.min.css') }}" rel="stylesheet">
+<link href="{{ asset('/css/dataTable/dataTables.bootstrap.min.css') }}"
+	rel="stylesheet">
+<link href="{{ asset('/css/dataTable/fixedHeader.bootstrap.min.css') }}"
+	rel="stylesheet">
+<link href="{{ asset('/css/dataTable/responsive.bootstrap.min.css') }}"
+	rel="stylesheet">
 <!-- ____termina datatableResponsive css-->
 
 <link href="{{ asset('/jqueryConfirm/css/jquery-confirm.min.css') }}"
@@ -23,12 +25,11 @@
 <script src="{{ asset('/jqueryConfirm/js/jquery-confirm.min.js') }}"></script>
 
 <!-- __Empieza selectPicker -->
-<link href="{{ asset('/css/bootstrapSelect/bootstrap-select.min.css') }}" rel="stylesheet">
+<link
+	href="{{ asset('/css/bootstrapSelect/bootstrap-select.min.css') }}"
+	rel="stylesheet">
 <script src="{{ asset('js/bootstrapSelect/bootstrap-select.min.js') }}"></script>
 <!-- __Termina selectPicker -->
-
-
-
 
 <!-- __Empieza datatableResponsive js -->
 <script src="{{ asset('js/datatable/dataTables.bootstrap.min.js') }}"></script>
@@ -100,7 +101,7 @@
 			</div>
 		</div>
 	</div>
-<div class="row">
+	<div class="row">
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -114,7 +115,8 @@
 					<div class="row" style="width: 96%;">
 						<div class="chart-stage">
 							<table id="dataTableINDMVentas"
-								class="table table-striped table-bordered nowrap" style="width: 96%;">
+								class="table table-striped table-bordered nowrap"
+								style="width: 96%;">
 
 								<thead>
 									<tr>
@@ -137,7 +139,7 @@
 			</div>
 		</div>
 	</div>
-<div class="row">
+	<div class="row">
 
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -178,8 +180,8 @@
 			</div>
 		</div>
 	</div>
-	
-	
+
+
 	<div class="row">
 		<div class="panel panel-primary">
 			<div class="panel-heading">
@@ -190,27 +192,26 @@
 			</div>
 			<div id="collapseThree" class="panel-collapse collapse in">
 				<div class="panel-body" style="padding-left: 5%;">
-				<div class="form-group">
-<!--       <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Please select a lunch ..." data-style="btn-danger" multiple data-done-button="true"> -->
-<!--         <option>Hot Dog, Fries and a Soda</option> -->
-<!--         <option>Burger, Shake and a Smile</option> -->
-<!--         <option>Sugar, Spice and all things nice</option> -->
-<!--         <option>Baby Back Ribs</option> -->
-<!--         <option>A really really long option made to illustrate an issue with the live search in an inline form</option> -->
-<!--       </select> -->
-<!--     </div> -->
-					<div class="row" style="width: 96%;">
-						<div class="d-flex justify-content-center" id="output"
-							style="width: 96%; "style="margin: 30px;">
+					<div class="form-group">
+						<!--       <select id="lunchBegins" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Please select a lunch ..." data-style="btn-danger" multiple data-done-button="true"> -->
+						<!--         <option>Hot Dog, Fries and a Soda</option> -->
+						<!--         <option>Burger, Shake and a Smile</option> -->
+						<!--         <option>Sugar, Spice and all things nice</option> -->
+						<!--         <option>Baby Back Ribs</option> -->
+						<!--         <option>A really really long option made to illustrate an issue with the live search in an inline form</option> -->
+						<!--       </select> -->
+						<!--     </div> -->
+						<div class="row" style="width: 96%;">
+							<div class="d-flex justify-content-center" id="output"
+								style="width: 96%;" style="margin: 30px;"></div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- __termina la prueba -->
 </div>
-<!-- __termina la prueba -->
-
 @include('usuarios.fragment.info')
 <br>
 @endsection

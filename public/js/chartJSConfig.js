@@ -18,7 +18,7 @@ function progreso() {
 			array.push(item.Crec);
 			
 			
-			console.log(formatearNumero(item.VentaAnterior));
+//			console.log(formatearNumero(item.VentaAnterior));
 
 			graficaDinamica(array);
 			// GraficaDinamicaMargen();

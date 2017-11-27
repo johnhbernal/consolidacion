@@ -13,5 +13,4 @@
 		{!! Form::close() !!}
 
 </div>
-@include('usuarios.fragment.aside')
 @endsection

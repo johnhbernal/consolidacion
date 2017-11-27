@@ -1,5 +1,5 @@
 
-selector = $.noConflict();
+//selector = $.noConflict();
 
 	selector(document).ready(function() {
 		

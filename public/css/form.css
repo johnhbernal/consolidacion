@@ -13,5 +13,16 @@ img.center {
 #logoImagen{
 	 width: 10%; 
 	 height: 10%;
-/* 	 background-image:url(�{{ asset('img/imgLogin/Boton-Ejemplo.jpg') }}�); */
+/* 	 background-image:url(“{{ asset('img/imgLogin/Boton-Ejemplo.jpg') }}”); */
 }
+
+.form-control-feedback bv-no-label glyphicon .glyphicon-remove:after{
+	color: red;
+	font-size: 28px !important;
+	margin-right: 2px !important;
+    font-weight: bold !important;
+}
+.inputGroupContainer .form-control-feedback { 
+      top: 25px !important;
+      right: 0px !important;
+} */

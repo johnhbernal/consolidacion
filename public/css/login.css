@@ -1,5 +1,5 @@
 body {
-	padding-top: 30px;
+/* 	padding-top: 30px; */
 	padding-bottom: 30px;
 /* 	background-color: #FFFFFF; */
     background-color: #F8F8F8;
@@ -19,6 +19,6 @@ body {
   	 
   	 
   	 
-/* 	 background-image:url(“{{ asset('img/imgLogin/Boton-Ejemplo.jpg') }}”); */
+	 background-image:url(“{{ asset('img/imgLogin/Boton-Ejemplo.jpg') }}”);
 }
 
