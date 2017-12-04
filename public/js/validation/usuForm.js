@@ -4,7 +4,7 @@ selector( document ).ready(function() {
 	selector('input[name="CONDICION_DISCAPACIDAD"]').prop('disabled', true);
 	selector("#TIPO_DISCAPACIDAD").prop('disabled', true);
 	
-	selector('#formUsuario').bootstrapValidator({
+	selector('#formUsuario,#formUsuarioEdit').bootstrapValidator({
 			trigger: 'blur',
 			excluded: ':disabled',
 			message:'This value is not valid',
@@ -212,10 +212,45 @@ selector( document ).ready(function() {
 	
 	
 	/*De esta manera se puede hacer la validacion cuando cambia el valor de otro para incapacidad */
-	selector('#formUsuario').on('change', '[name="DISCAPACIDAD"]', function(e) {
+	
+//	alert(selector('input[name="DISCAPACIDAD"]:checked', '#formUsuario').val());
+//	alert(selector('input[name="DISCAPACIDAD"]', '#formUsuario').is(':checked'))  //funciona trae si esta chequeada
+//	alert(selector('input[name="DISCAPACIDAD[]"]', '#formUsuario').val())
+	
+	/*Validamos cuando sea para el formulario de editar */
+//		selector('input[name="DISCAPACIDAD"]', '#formUsuarioEdit').each( function () {
+			
+//			if (){
+//				
+	
+	
+	
+//			}
+			if(selector('input[name="DISCAPACIDAD"]', '#formUsuarioEdit').val()==1){
+
+				selector('input[name="DISCAPACIDAD"][value="1"]', '#formUsuarioEdit').prop('checked', true);
+				selector('#DivCondIncapacidad').show();
+				selector('input[name="CONDICION_DISCAPACIDAD"][value="'+selector('input[name="CONDICION_DISCAPACIDAD"]', '#formUsuarioEdit').val()+'"]', '#formUsuarioEdit').prop('checked', true);
+				selector('input[name="CONDICION_DISCAPACIDAD"]', '#formUsuarioEdit').prop('disabled', false);
+				selector("#TIPO_DISCAPACIDAD", '#formUsuarioEdit').prop('disabled', false);
+			}
+			
+//	});
+	
+//	if(selector('input[name="DISCAPACIDAD"]:checked', '#formUsuario').val()==1){
+//		
+//		selector('#DivCondIncapacidad').show();
+//		
+//		selector('input[name="CONDICION_DISCAPACIDAD"]').prop('disabled', false);
+//		selector("#TIPO_DISCAPACIDAD").prop('disabled', false);
+//		selector('#formUsuario').bootstrapValidator('revalidateField', 'CONDICION_DISCAPACIDAD');
+//		selector('#formUsuario').bootstrapValidator('revalidateField', 'TIPO_DISCAPACIDAD');
+//}
+	
+	selector('#formUsuario,#formUsuarioEdit').on('change', '[name="DISCAPACIDAD"]', function(e) {
 		
 		
-		if(selector('input[name="DISCAPACIDAD"]:checked', '#formUsuario').val()==1){
+		if(selector('input[name="DISCAPACIDAD"]:checked', '#formUsuario,#formUsuarioEdit').val()==1){
 			
 			selector('#DivCondIncapacidad').show();
 			
@@ -239,6 +274,10 @@ selector( document ).ready(function() {
 	
 	selector(function () {
 		
+		if(selector('#FECHA_DE_NACIMIENTO').val()==""){
+//			alert('el valor es nulo');
+			
+		
 //		selector.extend( selector.fn.datetimepicker.defaults, {format: 'dd-mm-yyyy', locale: 'es'} );
 		
 //    	selector('input[name="FECHA_DE_NACIMIENTO"]').datetimepicker({
@@ -257,6 +296,29 @@ selector( document ).ready(function() {
     			maxDate: moment()//por ahora dejar asi 
 
         });//end  datetimepicker
+		}else{
+			
+			alert(selector('input[name="FECHA_DE_NACIMIENTO"]', '#formUsuarioEdit').val());
+			
+    		selector('#FECHA_DE_NACIMIENTO').datetimepicker({
+//		        todayBtn: true,
+		    format: 'YYYY-MM-DD',
+		    locale: 'es-us',
+//			keepOpen: true,
+//			showTodayButton: true,
+//			minDate : 'now',//valido cuando la fecha minima es la actual
+//			maxDate: moment().add(3, 'days'),//valido cuando se aceptan maximo 3 dias mas
+//			minDate: moment().add(-3, 'year'), // funciona
+//			maxDate: moment().add(-3, 'days'),//funciona
+			minDate: moment().add(-100, 'year'),
+//			maxDate: moment().add(-18, 'year'),//por ahora dejar asi funciona 
+			maxDate: moment(),//por ahora dejar asi 
+//			defaultDate: moment("'"+selector('input[name="FECHA_DE_NACIMIENTO"]', '#formUsuarioEdit').val()+"'")
+			defaultDate: moment().add('2016-01-01')
+//			viewDate: selector('input[name="FECHA_DE_NACIMIENTO"]', '#formUsuarioEdit').val()
+
+    });//end  datetimepicker
+		}
 	});//end function datetimepicker
 	
 /*	if(selector('#TIPO_DOCUMENTO option:selected').val()=='null'  ||selector('#TIPO_DOCUMENTO option:selected').val()=='' ){

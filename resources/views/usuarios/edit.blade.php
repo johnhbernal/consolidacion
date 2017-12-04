@@ -5,6 +5,7 @@
 	Editar usuario
 	<a href="{{route('usuarios.index')}}" class="btn btn-default pull-right">Listar usuarios</a>
 	</h2>
+	{!!$usuario!!}
 	@include('usuarios.fragment.error')
 {!! Form::model($usuario, ['route' => ['usuarios.update', $usuario->id], 'method' => 'PUT','id'=>'formUsuarioEdit','files'=>true,'disable' => true]) !!}
 			
