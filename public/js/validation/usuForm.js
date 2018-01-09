@@ -210,12 +210,7 @@ selector( document ).ready(function() {
 			
 	    });//End bootstrapValidator
 	
-	
-	/*De esta manera se puede hacer la validacion cuando cambia el valor de otro para incapacidad */
-	
-//	alert(selector('input[name="DISCAPACIDAD"]:checked', '#formUsuario').val());
-//	alert(selector('input[name="DISCAPACIDAD"]', '#formUsuario').is(':checked'))  //funciona trae si esta chequeada
-//	alert(selector('input[name="DISCAPACIDAD[]"]', '#formUsuario').val())
+
 	
 	/*Validamos cuando sea para el formulario de editar */
 //		selector('input[name="DISCAPACIDAD"]', '#formUsuarioEdit').each( function () {
@@ -272,6 +267,8 @@ selector( document ).ready(function() {
 	/*Usamos el datetimepicker en fecha*/
 //	TIPO_DOCUMENTO
 	
+//	esta funciona
+	
 	selector(function () {
 		
 		if(selector('#FECHA_DE_NACIMIENTO').val()==""){
@@ -285,6 +282,7 @@ selector( document ).ready(function() {
 //    		        todayBtn: true,
     		    format: 'YYYY-MM-DD',
     		    locale: 'es-us',
+    		    useCurrent: false,
 //    			keepOpen: true,
 //    			showTodayButton: true,
 //    			minDate : 'now',//valido cuando la fecha minima es la actual
@@ -292,16 +290,16 @@ selector( document ).ready(function() {
 //    			minDate: moment().add(-3, 'year'), // funciona
 //    			maxDate: moment().add(-3, 'days'),//funciona
     			minDate: moment().add(-100, 'year'),
-//    			maxDate: moment().add(-18, 'year'),//por ahora dejar asi funciona 
-    			maxDate: moment()//por ahora dejar asi 
+    			maxDate: moment().add(-18, 'year'),//por ahora dejar asi funciona 
+//    			maxDate: moment()//por ahora dejar asi 
+    			
 
         });//end  datetimepicker
 		}else{
-			
-			alert(selector('input[name="FECHA_DE_NACIMIENTO"]', '#formUsuarioEdit').val());
-			
+						
     		selector('#FECHA_DE_NACIMIENTO').datetimepicker({
 //		        todayBtn: true,
+    		useCurrent: false,
 		    format: 'YYYY-MM-DD',
 		    locale: 'es-us',
 //			keepOpen: true,
@@ -311,22 +309,23 @@ selector( document ).ready(function() {
 //			minDate: moment().add(-3, 'year'), // funciona
 //			maxDate: moment().add(-3, 'days'),//funciona
 			minDate: moment().add(-100, 'year'),
-//			maxDate: moment().add(-18, 'year'),//por ahora dejar asi funciona 
-			maxDate: moment(),//por ahora dejar asi 
-//			defaultDate: moment("'"+selector('input[name="FECHA_DE_NACIMIENTO"]', '#formUsuarioEdit').val()+"'")
-			defaultDate: moment().add('2016-01-01')
-//			viewDate: selector('input[name="FECHA_DE_NACIMIENTO"]', '#formUsuarioEdit').val()
+			maxDate: moment().add(-18, 'year'),//por ahora dejar asi funciona 
+//			maxDate: moment()
 
     });//end  datetimepicker
 		}
 	});//end function datetimepicker
 	
-/*	if(selector('#TIPO_DOCUMENTO option:selected').val()=='null'  ||selector('#TIPO_DOCUMENTO option:selected').val()=='' ){
+//	hasta aca funciona
+	
+	
+if(selector('#TIPO_DOCUMENTO option:selected').val()=='null'  ||selector('#TIPO_DOCUMENTO option:selected').val()=='' ){
 		
 		selector(function () {
 		selector('#FECHA_DE_NACIMIENTO').datetimepicker({
 //	    		        todayBtn: true,
-			format: 'DD/MM/YYYY',
+			useCurrent: false,
+			format: 'YYYY-MM-DD',
 			locale: 'es-us',
 			minDate: moment().add(-100, 'year'),
 			maxDate: moment()//por ahora dejar asi 
@@ -340,13 +339,16 @@ selector( document ).ready(function() {
 		
 		
 		selector('#FECHA_DE_NACIMIENTO').empty();
+		selector('#formUsuario,#formUsuarioEdit').on('change', '[name="TIPO_DOCUMENTO"] option:selected', function(e) {
 		switch (selector('#TIPO_DOCUMENTO option:selected').val()) {
 		case 'CC':
 			alert('Cedula de ciudadania');
 			selector(function () {
     		selector('#FECHA_DE_NACIMIENTO').datetimepicker({
 //		        todayBtn: true,
-		    format: 'DD/MM/YYYY',
+//    		useCurrent: false,
+    			useCurrent: false,
+		    format: 'YYYY-MM-DD',
 		    locale: 'es-us',
 			keepOpen: true,
 			minDate: moment().add(-100, 'year'),
@@ -361,7 +363,8 @@ selector( document ).ready(function() {
 			selector(function () {
 				selector('#FECHA_DE_NACIMIENTO').datetimepicker({
 //		        todayBtn: true,
-					format: 'DD/MM/YYYY',
+					useCurrent: false,
+					format: 'YYYY-MM-DD',
 					locale: 'es-us',
 					keepOpen: true,
 					minDate: moment().add(-8, 'year'),
@@ -380,6 +383,7 @@ selector( document ).ready(function() {
 //			selector('#TIPO_DOCUMENTO').data('DateTimePicker').on('dp.change', function(e) {
 				
 				selector('#FECHA_DE_NACIMIENTO').datetimepicker({
+					useCurrent: false,
 						minDate: moment().add(-10, 'year'),
 						maxDate: moment().add(-8, 'year'),
 						
@@ -396,7 +400,8 @@ selector( document ).ready(function() {
 			selector(function () {
 			
 		    		selector('#FECHA_DE_NACIMIENTO').datetimepicker({
-		    		    format: 'DD/MM/YYYY',
+		    			useCurrent: false,
+		    		    format: 'YYYY-MM-DD',
 		    		    locale: 'es-us',
 		    			minDate: moment().add(-100, 'year'),
 		    			maxDate: moment()//por ahora dejar asi 
@@ -408,6 +413,11 @@ selector( document ).ready(function() {
 //	});
 	
 
-	}*/
+		});//finaliza el onchenge
+	}
+
+if(selector('#formUsuarioEdit #TIPO_DOCUMENTO option:selected').val()!='null'  ||selector('#formUsuarioEdit #TIPO_DOCUMENTO option:selected').val()!='' ){
+selector('input[name="CONDICION_DISCAPACIDAD"]').prop('disabled', true);
+}
 });// End document ready
 
